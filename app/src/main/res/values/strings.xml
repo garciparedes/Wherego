@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">WhereGo</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="event_seeker">Buscar eventos</string>
+    <string name="event_saved">Eventos guardados</string>
+    <string name="event_popular">Eventos populares</string>
+
+    <string name="map">Mapa</string>
+    <string name="events">Eventos</string>
+    <string name="calendar">Calendario</string>
+
+
+    <string name="hint">Editor #%d</string>
+
+    <string name="open_drawer">Drawer abierto</string>
+    <string name="close_drawer">Drawer cerrado</string>
+
+
+
+</resources>
