@@ -10,9 +10,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class ListEventFragment extends Fragment {
@@ -24,7 +26,7 @@ public class ListEventFragment extends Fragment {
     //Variable que recoge el nombre de los eventos
 
     //String[] events = getArguments().getStringArray(getString(R.array.nav_options));
-    String[] events = {"Fiestas de santander", "Fiestas de Palencia", "Concierto de Nach", "Concierto de Cheb Ruben", "Fiestas de Villalumbroso", "Navidades", "Nochebuena", "Dia de Carejas", "Pascua", "Fiestas de Valladolid", "Fiestas de Fuentes de Nava,", "Fiestas de Carrión de los Condes", "Fiestas de Saldaña" };
+    String[] events = {"Fiestas de santander", "Fiestas de Paredes de Nava", "Fiestas de Palencia", "Concierto de Nach", "Concierto de Cheb Ruben", "Fiestas de Villalumbroso", "Navidades", "Nochebuena", "Dia de Carejas", "Pascua", "Fiestas de Valladolid", "Fiestas de Fuentes de Nava,", "Fiestas de Carrión de los Condes", "Fiestas de Saldaña" };
 
 
     public static ListEventFragment newInstance(int index) {
@@ -56,6 +58,26 @@ public class ListEventFragment extends Fragment {
         eventList.setAdapter(adapter);
         //eventList.setAdapter(new CustomArrayAdapter(this));
 
+        eventList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+
+
+
+                //**********************************************************
+                //*                 UNCOMPLETE METHOD                      *
+                //**********************************************************
+
+
+
+                Toast.makeText(getActivity().getApplicationContext(),
+                        "Click ListItem Number " + position, Toast.LENGTH_LONG)
+                        .show();
+
+
+            }
+        });
 
     }
 
