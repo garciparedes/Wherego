@@ -7,6 +7,7 @@ package com.garciparedes.wherego;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,11 +64,16 @@ public class ListEventFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
 
-
-
                 //**********************************************************
                 //*                 UNCOMPLETE METHOD                      *
                 //**********************************************************
+
+
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+
+                // Insert the fragment by replacing any existing fragment
+                fragmentManager.beginTransaction()
+                        .replace(R.id.content_frame,CalendarEventFragment.newInstance(1)).commit();
 
 
 
