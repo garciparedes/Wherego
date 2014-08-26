@@ -6,7 +6,6 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
@@ -84,7 +83,7 @@ public class MainActivity extends ActionBarActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
 
 
-        Fragment fragmentList = TabbedEventsFragment.newInstance(0);
+        Fragment fragmentList = TabbedFragment.newInstance(0);
         mTitle = getResources().getStringArray(R.array.nav_options)[0];
         getActionBar().setTitle(mTitle);
 
@@ -121,9 +120,9 @@ public class MainActivity extends ActionBarActivity {
 
         FragmentManager fragmentManager = getSupportFragmentManager();
 
-        Fragment fragmentList = (TabbedEventsFragment.newInstance(1));
-        Fragment fragmentSaved = (TabbedEventsFragment.newInstance(2));
-        Fragment fragmentPopular = (TabbedEventsFragment.newInstance(3));
+        Fragment fragmentList = (TabbedFragment.newInstance(1));
+        Fragment fragmentSaved = (TabbedFragment.newInstance(2));
+        Fragment fragmentPopular = (TabbedFragment.newInstance(3));
         Fragment fragmentSettings = (SettingsFragment.newInstance());
 
 

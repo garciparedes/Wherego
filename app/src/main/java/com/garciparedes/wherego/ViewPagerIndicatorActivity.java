@@ -14,7 +14,7 @@ public class ViewPagerIndicatorActivity extends FragmentActivity {
         if (getSupportFragmentManager().findFragmentById(android.R.id.content) == null) {
             getSupportFragmentManager().beginTransaction()
                     .add(android.R.id.content,
-                            new TabbedEventsFragment()).commit();
+                            new TabbedFragment()).commit();
         }
     }
 }

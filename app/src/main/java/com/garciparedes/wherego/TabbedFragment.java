@@ -12,14 +12,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.google.android.gms.internal.ge;
-
 /**
  * Created by garciparedes on 27/07/14.
  */
 
 
-public class TabbedEventsFragment extends Fragment {
+public class TabbedFragment extends Fragment {
 
     /**
      * The pager widget, which handles animation and allows swiping horizontally
@@ -42,9 +40,11 @@ public class TabbedEventsFragment extends Fragment {
     }
 
 
-    public static TabbedEventsFragment newInstance(int index) {
+    public static TabbedFragment newInstance(int index) {
 
-        TabbedEventsFragment f = new TabbedEventsFragment();
+        TabbedFragment f = new TabbedFragment();
+
+
 
         return f;
 

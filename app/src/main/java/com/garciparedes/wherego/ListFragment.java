@@ -18,7 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-public class ListEventFragment extends Fragment {
+public class ListFragment extends Fragment {
 
     //Widget Lista
     private ListView eventList;
@@ -30,8 +30,8 @@ public class ListEventFragment extends Fragment {
     String[] events = {"Fiestas de santander", "Fiestas de Paredes de Nava", "Fiestas de Palencia", "Concierto de Nach", "Concierto de Cheb Ruben", "Fiestas de Villalumbroso", "Navidades", "Nochebuena", "Dia de Carejas", "Pascua", "Fiestas de Valladolid", "Fiestas de Fuentes de Nava,", "Fiestas de Carrión de los Condes", "Fiestas de Saldaña" };
 
 
-    public static ListEventFragment newInstance(int index) {
-        ListEventFragment f = new ListEventFragment();
+    public static ListFragment newInstance(int index) {
+        ListFragment f = new ListFragment();
         Bundle args = new Bundle();
         args.putInt("index", index);
         f.setArguments(args);

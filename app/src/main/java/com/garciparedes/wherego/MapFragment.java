@@ -2,17 +2,15 @@ package com.garciparedes.wherego;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 
 /**
  * Created by garciparedes on 07/08/14.
  */
-public class MapEventsFragment extends Fragment {
+public class MapFragment extends Fragment {
 
 
     /**
@@ -20,8 +18,8 @@ public class MapEventsFragment extends Fragment {
      * initializes the fragment's arguments, and returns the
      * new fragment to the client.
      */
-    public static MapEventsFragment newInstance(int index) {
-        MapEventsFragment f = new MapEventsFragment();
+    public static MapFragment newInstance(int index) {
+        MapFragment f = new MapFragment();
         Bundle args = new Bundle();
         args.putInt("index", index);
         f.setArguments(args);
