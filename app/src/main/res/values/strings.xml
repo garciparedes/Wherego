@@ -19,6 +19,8 @@
     <string name="open_drawer">Drawer abierto</string>
     <string name="close_drawer">Drawer cerrado</string>
 
+    <string name="exit_dialog_title">Really Exit?</string>
+    <string name="exit_dialog_message">¿Está seguro de que desea salir?</string>
 
 
 </resources>

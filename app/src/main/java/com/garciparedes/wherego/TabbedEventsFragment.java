@@ -43,24 +43,14 @@ public class TabbedEventsFragment extends Fragment {
 
 
     public static TabbedEventsFragment newInstance(int index) {
+
         TabbedEventsFragment f = new TabbedEventsFragment();
+
         return f;
+
     }
 
-   private void setTitle(int index){
-       switch (index){
-           case 1:
-               activity.getSupportActionBar().setTitle(R.string.event_seeker);
 
-           case 2:
-               activity.getSupportActionBar().setTitle(R.string.event_saved);
-
-           case 3:
-               activity.getSupportActionBar().setTitle(R.string.event_popular);
-
-
-       }
-   }
 
 
     @Override

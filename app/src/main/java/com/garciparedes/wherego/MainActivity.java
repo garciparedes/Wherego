@@ -1,5 +1,7 @@
 package com.garciparedes.wherego;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -230,6 +232,24 @@ public class MainActivity extends ActionBarActivity {
         }
         // Handle your other action bar items...
         return super.onOptionsItemSelected(item);
+    }
+
+
+    @Override
+    public void onBackPressed() {
+
+        //http://stackoverflow.com/a/6413736/3921457
+        new AlertDialog.Builder(this)
+                //.setTitle( R.string.exit_dialog_title)
+                .setMessage(R.string.exit_dialog_message)
+                .setNegativeButton(android.R.string.no, null)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        MainActivity.super.onBackPressed();
+
+                    }
+                }).create().show();
     }
 
 
