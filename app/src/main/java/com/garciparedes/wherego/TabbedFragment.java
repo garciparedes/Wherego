@@ -23,7 +23,7 @@ public class TabbedFragment extends Fragment {
      * The pager widget, which handles animation and allows swiping horizontally
      * to access previous and next pages.
      */
-    private ViewPager pager = null;
+    ViewPager pager = null;
 
     /**
      * The pager adapter, which provides the pages to the view pager widget.
@@ -58,7 +58,7 @@ public class TabbedFragment extends Fragment {
                              ViewGroup container,
                              Bundle savedInstanceState) {
         View result = inflater.inflate(R.layout.fragment_tabbed_events, container, false);
-        pager = (ViewPager) result.findViewById(R.id.pager);
+        ViewPager pager = (ViewPager) result.findViewById(R.id.pager);
 
 
         //Limita el numero de tabs cargadas en memoria
