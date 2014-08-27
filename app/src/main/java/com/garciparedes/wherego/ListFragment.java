@@ -43,7 +43,7 @@ public class ListFragment extends Fragment {
                              ViewGroup container,
                              Bundle savedInstanceState) {
 
-        return inflater.inflate(R.layout.fragment_list_event, container, false);
+        return inflater.inflate(R.layout.fragment_list, container, false);
 
     }
 

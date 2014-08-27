@@ -12,6 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.astuetz.PagerSlidingTabStrip;
+
 /**
  * Created by garciparedes on 27/07/14.
  */
@@ -23,12 +25,12 @@ public class TabbedFragment extends Fragment {
      * The pager widget, which handles animation and allows swiping horizontally
      * to access previous and next pages.
      */
-    ViewPager pager = null;
+    private ViewPager pager;
+    private PagerSlidingTabStrip tabs;
 
     /**
      * The pager adapter, which provides the pages to the view pager widget.
      */
-
 
     private FragmentActivity myContext;
     ActionBarActivity activity = ((ActionBarActivity)getActivity());
@@ -43,9 +45,6 @@ public class TabbedFragment extends Fragment {
     public static TabbedFragment newInstance(int index) {
 
         TabbedFragment f = new TabbedFragment();
-
-
-
         return f;
 
     }
@@ -57,8 +56,8 @@ public class TabbedFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container,
                              Bundle savedInstanceState) {
-        View result = inflater.inflate(R.layout.fragment_tabbed_events, container, false);
-        ViewPager pager = (ViewPager) result.findViewById(R.id.pager);
+        View result = inflater.inflate(R.layout.fragment_tabbed, container, false);
+        pager = (ViewPager) result.findViewById(R.id.pager);
 
 
         //Limita el numero de tabs cargadas en memoria
@@ -66,6 +65,10 @@ public class TabbedFragment extends Fragment {
 
         //Seleciona un adapter
         pager.setAdapter(buildAdapter());
+
+        // Bind the tabs to the ViewPager
+        tabs = (PagerSlidingTabStrip) result.findViewById(R.id.tabs);
+        tabs.setViewPager(pager);
 
 
 
