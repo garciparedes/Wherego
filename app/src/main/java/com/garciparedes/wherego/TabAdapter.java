@@ -37,7 +37,7 @@ public class TabAdapter extends FragmentPagerAdapter {
                 return(CalendarEventFragment.newInstance(1));
 
             case 2:
-                return(MapFragment.newInstance(1));
+                return(GMapFragment.newInstance(1));
 
             default:
                 return(new ListFragment());
