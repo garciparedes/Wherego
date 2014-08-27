@@ -11,8 +11,6 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.viewpagerindicator.TabPageIndicator;
-
 
 /**
  * Created by garciparedes on 27/07/14.
@@ -25,7 +23,7 @@ public class TabbedFragment extends Fragment {
      * The pager widget, which handles animation and allows swiping horizontally
      * to access previous and next pages.
      */
-    private ViewPager pager = null;
+    ViewPager pager = null;
 
     /**
      * The pager adapter, which provides the pages to the view pager widget.
@@ -60,7 +58,7 @@ public class TabbedFragment extends Fragment {
                              ViewGroup container,
                              Bundle savedInstanceState) {
         View result = inflater.inflate(R.layout.fragment_tabbed_events, container, false);
-        pager = (ViewPager) result.findViewById(R.id.pager);
+        ViewPager pager = (ViewPager) result.findViewById(R.id.pager);
 
 
         //Limita el numero de tabs cargadas en memoria
@@ -68,7 +66,6 @@ public class TabbedFragment extends Fragment {
 
         //Seleciona un adapter
         pager.setAdapter(buildAdapter());
-        TabPageIndicator titleIndicator = (TabPageIndicator) result.findViewById(R.id.indicator);
 
 
 

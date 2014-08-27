@@ -26,5 +26,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:19.+'
     compile 'com.google.android.gms:play-services:+'
     compile 'com.astuetz:pagerslidingtabstrip:1.0.1'
-    compile project(':library')
+
 }
