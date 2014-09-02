@@ -84,6 +84,8 @@ public class TabbedFragment extends Fragment {
 
 
 
+
+    /*
     public void onDestroyView() {
         super.onDestroyView();
         Fragment f = (Fragment) getFragmentManager().findFragmentById(R.id.map);
@@ -93,6 +95,6 @@ public class TabbedFragment extends Fragment {
         }
 
     }
-
+    */
 
 }

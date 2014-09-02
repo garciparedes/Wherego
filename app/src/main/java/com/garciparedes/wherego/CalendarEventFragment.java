@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 
 /**
  * Created by garciparedes on 15/08/14.
@@ -24,27 +25,13 @@ public class CalendarEventFragment extends Fragment {
 
 
     private ListView eventList;
+    private CalendarView calView;
+
+    Calendar cal = Calendar.getInstance();
 
 
-    String[] events = {"Fiestas de santander", "Fiestas de Paredes de Nava"};
-
-    private Event[] datos =
-            new Event[]{
-                    new Event("Fiestas Becerril", "Bobada", 28,8,2014),
-                    new Event("Fiestas Amusco", "Bobada", 29,8,2014),
-                    new Event("Fiestas Paredes", "Bobada", 30,8,2014),
-                    new Event("Fiestas San cebrian", "Bobada", 27,8,2014),
-                    new Event("Fiestas Villatoquite", "Bobada", 24,8,2014),
-                    new Event("Fiestas Santander", "Bobada", 1,9,2014),
-                    new Event("Fiestas Palencia", "Bobada", 2,9,2014),
-                    new Event("Fiestas vega", "Bobada", 3,9,2014),
-                    new Event("Fiestas herrera", "Bobada", 44,9,2014),
-
-            };
-
-
-    private ArrayAdapter<String> adapter;
-    private CalendarView cal;
+    ArrayList <Event> datos = CallAPI.getEventList();
+    ArrayList <Event> datosDay = new ArrayList<Event>();
 
 
     public static CalendarEventFragment newInstance(int index) {
@@ -53,6 +40,7 @@ public class CalendarEventFragment extends Fragment {
 
         return f;
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -68,9 +56,10 @@ public class CalendarEventFragment extends Fragment {
     public void onActivityCreated(Bundle state) {
         super.onActivityCreated(state);
 
+        configList();
+
         configCal();
 
-        configList();
 
     }
 
@@ -81,20 +70,26 @@ public class CalendarEventFragment extends Fragment {
         //*                 UNCOMPLETE METHOD                      *
         //**********************************************************
 
-        cal = (CalendarView) getView().findViewById(R.id.calendar);
+        calView = (CalendarView) getView().findViewById(R.id.calendar);
 
-        cal.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+        calView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+
 
             @Override
             public void onSelectedDayChange(CalendarView view, int year, int month,
                                             int dayOfMonth) {
                 // TODO Auto-generated method stub
 
+                month++;
+
                 Toast.makeText(getActivity().getBaseContext(), "Selected Date is\n\n"
                                 + dayOfMonth + " : " + month + " : " + year,
-                        Toast.LENGTH_LONG
+                        Toast.LENGTH_SHORT
                 ).show();
 
+                datosDay = getListDayEvent(dayOfMonth,month,year);
+
+                updateAdapter(datosDay);
             }
         });
     }
@@ -108,9 +103,13 @@ public class CalendarEventFragment extends Fragment {
 
         eventList = (ListView)getView().findViewById(R.id.calendarlist);
 
-        adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, events);
+        int dayOfMonth = cal.get(Calendar.DAY_OF_MONTH);
+        int month = cal.get(Calendar.MONTH)+1;
+        int year = cal.get(Calendar.YEAR);
 
-        eventList.setAdapter(adapter);
+        datosDay = getListDayEvent(dayOfMonth,month,year);
+
+        updateAdapter(datosDay);
 
         eventList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -126,10 +125,34 @@ public class CalendarEventFragment extends Fragment {
             */
 
             Toast.makeText(getActivity().getApplicationContext(),
-                    "Click ListItem Number " + position, Toast.LENGTH_LONG)
+                    "Click ListItem Number " + position, Toast.LENGTH_SHORT)
                     .show();
 
             }
         });
+    }
+
+
+    public ArrayList<Event> getListDayEvent(int dayOfMonth, int month, int year){
+
+        ArrayList<Event> datosDay = new ArrayList<Event>();
+
+        for (int i = 0; i< datos.size(); i++){
+            if ((datos.get(i).getDate().getYear()+1900) == year &&
+                (datos.get(i).getDate().getMonth()+1) == month &&
+                datos.get(i).getDate().getDay() == dayOfMonth){
+                datosDay.add(datos.get(i));
+
+            }
+
+        }
+
+        return datosDay;
+    }
+
+
+    public void updateAdapter (ArrayList<Event> datos){
+        eventList.setAdapter(new CustomArrayAdapter(this, datos));
+
     }
 }

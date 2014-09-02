@@ -1,5 +1,8 @@
 package com.garciparedes.wherego;
 
+
+import java.util.Date;
+
 /**
  * Created by garciparedes on 21/07/14.
  */
@@ -7,18 +10,22 @@ public class Event {
 
     private String name;
     private String description;
+    private String type;
 
-    private int day;
-    private int month;
-    private int year;
+    private Date date;
+
+    private Coordinate coordinate;
 
 
-    public Event(String name, String description, int day, int month, int year){
+    //private Calendar date;
+
+
+    public Event(String name, String description, String type, Date date, Coordinate coordinate){
         this.name = name;
         this.description = description;
-        this.day = day;
-        this.month = month;
-        this.year = year;
+        this.type = type;
+        this.date = date;
+        this.coordinate = coordinate;
 
     }
 
@@ -30,15 +37,11 @@ public class Event {
         return description;
     }
 
-    public int getDay(){
-        return day;
+    public Date getDate(){
+        return date;
+    }
+    public Coordinate getCoordinate(){
+        return coordinate;
     }
 
-    public int getMonth(){
-        return month;
-    }
-
-    public int getYear(){
-        return year;
-    }
 }
