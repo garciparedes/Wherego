@@ -8,12 +8,18 @@
     <item
         android:id="@+id/action_refresh"
         android:icon="@drawable/ic_action_refresh"
-        android:title="Actualizar"
-        wherego:showAsAction="ifRoom"/>
+        android:title="@string/update"
+        wherego:showAsAction="never"/>
 
     <item
         android:id="@+id/action_search"
         android:icon="@drawable/ic_action_search"
-        android:title="Buscar"
+        android:title="@string/search"
+        wherego:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/action_new_event"
+        android:icon="@drawable/ic_action_new_event"
+        android:title="@string/new_event"
         wherego:showAsAction="ifRoom"/>
 </menu>

@@ -22,5 +22,22 @@
     <string name="exit_dialog_title">Really Exit?</string>
     <string name="exit_dialog_message">¿Está seguro de que desea salir?</string>
 
+    <string name="new_event">Nuevo evento</string>
+    <string name="search">Buscar</string>
+    <string name="update">Actualizar</string>
+
+    <string name="name">Nombre</string>
+    <string name="type">Tipo</string>
+    <string name="description">Descripción</string>
+    <string name="date">Día</string>
+    <string name="coordinate">Coordenadas</string>
+
+    <!-- Preference framework strings. -->
+    <string name="confirm">Confirmar</string>
+    <!-- Preference framework strings. -->
+    <string name="cancel">Cancelar</string>
+
+
+
 
 </resources>

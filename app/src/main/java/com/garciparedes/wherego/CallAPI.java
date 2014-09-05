@@ -9,26 +9,31 @@ import java.util.Arrays;
  */
 public class CallAPI {
 
-    static long time = new Date().getTime();
+    private static long time = new Date().getTime();
 
-    static Event[] lista =
+    private static Event[] lista =
             new Event[]{
-                    new Event("Fiestas Becerril", "Bobada", "Fiesta", new Date(time),new Coordinate("Palencia",42.0088161,-4.5269538)),
-                    new Event("Fiestas Amusco", "Bobada", "Fiesta",new Date(time), new Coordinate("Palencia",42.0088161,-4.5269538)),
-                    new Event("Fiestas Paredes", "Bobada", "Fiesta",new Date(1409650562875L), new Coordinate("Palencia",42.0088161,-4.5269538)),
-                    new Event("Fiestas San cebrian", "Bobada", "Fiesta",new Date(1409650562875L), new Coordinate("Palencia",42.0088161,-4.5269538)),
-                    new Event("Fiestas Villatoquite", "Bobada", "Fiesta",new Date(1409650562875L), new Coordinate("Palencia",42.0088161,-4.5269538)),
-                    new Event("Fiestas Santander", "Bobada", "Fiesta",new Date(1409650562875L), new Coordinate("Palencia",42.0088161,-4.5269538)),
-                    new Event("Fiestas Palencia", "Bobada", "Fiesta",new Date(1409650562875L), new Coordinate("Palencia",42.0088161,-4.5269538)),
-                    new Event("Fiestas vega", "Bobada", "Fiesta",new Date(1409650562875L), new Coordinate("Palencia",42.0088161,-4.5269538)),
-                    new Event("Fiestas herrera", "Bobada", "Fiesta",new Date(1409650562875L), new Coordinate("Palencia",42.0088161,-4.5269538)),
-                    new Event("Fiestas de carejas", "Bobada", "Fiesta",new Date(1409650562875L), new Coordinate("Palencia",42.0088161,-4.5269538)),
+                    new Event("Fiestas Becerril", "Bobada", "Fiesta", new Date(time), new Coordinate("Palencia", 42.0088161, -4.5269538)),
+                    new Event("Fiestas Amusco", "Bobada", "Fiesta", new Date(time), new Coordinate("Palencia", 42.0088161, -4.5269538)),
+                    new Event("Fiestas Paredes", "Bobada", "Fiesta", new Date(1409650562875L), new Coordinate("Palencia", 42.0088161, -4.5269538)),
+                    new Event("Fiestas San cebrian", "Bobada", "Fiesta", new Date(1409650562875L), new Coordinate("Palencia", 42.0088161, -4.5269538)),
+                    new Event("Fiestas Villatoquite", "Bobada", "Fiesta", new Date(1409650562875L), new Coordinate("Palencia", 42.0088161, -4.5269538)),
+                    new Event("Fiestas Santander", "Bobada", "Fiesta", new Date(1409650562875L), new Coordinate("Palencia", 42.0088161, -4.5269538)),
+                    new Event("Fiestas Palencia", "Bobada", "Fiesta", new Date(1409650562875L), new Coordinate("Palencia", 42.0088161, -4.5269538)),
+                    new Event("Fiestas vega", "Bobada", "Fiesta", new Date(1409650562875L), new Coordinate("Palencia", 42.0088161, -4.5269538)),
+                    new Event("Fiestas herrera", "Bobada", "Fiesta", new Date(1409650562875L), new Coordinate("Palencia", 42.0088161, -4.5269538)),
+                    new Event("Fiestas de carejas", "Bobada", "Fiesta", new Date(1409650562875L), new Coordinate("Palencia", 42.0088161, -4.5269538)),
 
 
             };
-    static ArrayList <Event> eventArray = new ArrayList<Event>(Arrays.asList(lista));
+    static ArrayList<Event> eventArray = new ArrayList<Event>(Arrays.asList(lista));
 
-    public static ArrayList<Event> getEventList(){
+    public static ArrayList<Event> getEventList() {
         return eventArray;
+    }
+
+
+    public static void addEvent(Event event) {
+        eventArray.add(event);
     }
 }

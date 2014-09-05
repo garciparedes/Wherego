@@ -1,0 +1,90 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/edit_text_set_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:id="@+id/layout_set_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edit_text_set_name">
+
+        <TextView
+            android:id="@+id/tv_set_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/type"/>
+
+        <EditText
+            android:id="@+id/edit_text_set_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+
+
+    <EditText
+        android:id="@+id/edit_text_set_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:gravity="top"
+        android:layout_below="@id/layout_set_type"/>
+
+
+    <LinearLayout
+        android:id="@+id/layout_set_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edit_text_set_description">
+
+        <TextView
+            android:id="@+id/tv_set_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/date"/>
+
+        <EditText
+            android:id="@+id/edit_text_set_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/layout_set_coordinate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_set_date">
+
+        <TextView
+            android:id="@+id/tv_set_coordinate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/coordinate"/>
+
+        <EditText
+            android:id="@+id/edit_text_set_coordinate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+
+
+    <Button
+        android:id="@+id/btn_new_event_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="@string/confirm"/>
+
+
+
+
+
+</RelativeLayout>

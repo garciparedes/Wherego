@@ -20,17 +20,41 @@ public class Event {
     //private Calendar date;
 
 
-    public Event(String name, String description, String type, Date date, Coordinate coordinate){
+    public Event(String name, String type, String description, Date date, Coordinate coordinate){
         this.name = name;
-        this.description = description;
         this.type = type;
+        this.description = description;
         this.date = date;
         this.coordinate = coordinate;
 
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public void setCoordinate(Coordinate coordinate) {
+        this.coordinate = coordinate;
+    }
+
     public String getName(){
         return name;
+    }
+
+    public String getType() {
+        return type;
     }
 
     public String getDescription(){
@@ -40,6 +64,7 @@ public class Event {
     public Date getDate(){
         return date;
     }
+
     public Coordinate getCoordinate(){
         return coordinate;
     }

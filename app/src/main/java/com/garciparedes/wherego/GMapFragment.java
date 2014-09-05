@@ -1,11 +1,14 @@
 package com.garciparedes.wherego;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.InflateException;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.maps.CameraUpdate;
@@ -16,6 +19,8 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.util.ArrayList;
 
 
 /**
@@ -30,7 +35,11 @@ public class GMapFragment extends Fragment {
     GoogleMap map;
     private static View rootView;
     SupportMapFragment mapView;
+    Button lockButton;
+    Boolean isLocked = false;
 
+
+    ArrayList<Event> datos = CallAPI.getEventList();
 
     /**
      * Static factory method that takes an int parameter,
@@ -75,11 +84,6 @@ public class GMapFragment extends Fragment {
         }
 
         ft.commit();
-
-
-
-
-
         // Move the camera instantly to hamburg with a zoom of 15.
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(PALENCIA, 15));
 
@@ -132,27 +136,54 @@ public class GMapFragment extends Fragment {
                     //.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher))
             );
 
-            map.getUiSettings().setAllGesturesEnabled(false);
+
+
+            map.getUiSettings().setAllGesturesEnabled(isLocked);
 
             // Updates the location and zoom of the MapView
-            CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng(43.1, -87.9), 10);
+            CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(PALENCIA, 10);
             map.animateCamera(cameraUpdate);
 
+            for (int i = 0; i<datos.size(); i++){
+                createMarker(datos.get(i));
+            }
+
+
         }
 
+        lockButton = (Button) rootView.findViewById(R.id.btn_googlemaps_lock);
+
+        lockButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                unlockButton(v);
+            }
+        });
         return rootView;
     }
-    /*
-    public void onDestroyView() {
-        super.onDestroyView();
-        Fragment f = (Fragment) getFragmentManager().findFragmentById(R.id.map);
-        if (f != null) {
-            getFragmentManager().beginTransaction().remove(f).commit();
 
+    public void unlockButton(View view) {
+
+        if (isLocked == false){
+            isLocked = true;
+            map.getUiSettings().setAllGesturesEnabled(isLocked);
+
+        }else{
+            isLocked = false;
+            map.getUiSettings().setAllGesturesEnabled(isLocked);
         }
 
+
     }
-    */
+    public void createMarker(Event event){
+
+        LatLng coordinates = new LatLng(event.getCoordinate().getX(),event.getCoordinate().getY());
+        Marker marker = map.addMarker(new MarkerOptions()
+                        .position(coordinates)
+                        .title(event.getName())
+                        .snippet(event.getDescription())
+                //.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher))
+        );
+    }
 
 
 

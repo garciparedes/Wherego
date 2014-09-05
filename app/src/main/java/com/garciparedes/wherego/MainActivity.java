@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -24,6 +25,8 @@ public class MainActivity extends ActionBarActivity {
     private ListView navList;
     private CharSequence mTitle;
     private ActionBarDrawerToggle drawerToggle;
+
+    FragmentManager fragmentManager = getSupportFragmentManager();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,7 +117,6 @@ public class MainActivity extends ActionBarActivity {
 
 
 
-        FragmentManager fragmentManager = getSupportFragmentManager();
 
         Fragment fragmentList = (TabbedFragment.newInstance(1));
         Fragment fragmentSaved = (TabbedFragment.newInstance(2));
@@ -197,19 +199,48 @@ public class MainActivity extends ActionBarActivity {
         // view
         boolean drawerOpen = drawerLayout.isDrawerOpen(navList);
         menu.findItem(R.id.action_search).setVisible(!drawerOpen);
+        menu.findItem(R.id.action_new_event).setVisible(!drawerOpen);
         menu.findItem(R.id.action_refresh).setVisible(!drawerOpen);
         return super.onPrepareOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
+        Fragment fragmentNewEvent = (NewEventFragment.newInstance());
+
         // Pass the event to ActionBarDrawerToggle, if it returns
         // true, then it has handled the app icon touch event
         if (drawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
+        /*
         // Handle your other action bar items...
         return super.onOptionsItemSelected(item);
+       */
+
+        switch (item.getItemId()) {
+            // action with ID action_refresh was selected
+            case R.id.action_refresh:
+                Toast.makeText(this, "Refresh selected", Toast.LENGTH_SHORT)
+                        .show();
+                break;
+            // action with ID action_settings was selected
+            case R.id.action_search:
+                Toast.makeText(this, "Search selected", Toast.LENGTH_SHORT)
+                        .show();
+                break;
+            case R.id.action_new_event:
+
+                // Insert the fragment by replacing any existing fragment
+                fragmentManager.beginTransaction()
+                        .replace(R.id.content_frame, fragmentNewEvent).commit();
+                break;
+            default:
+                break;
+        }
+
+        return true;
     }
 
 
@@ -233,14 +264,7 @@ public class MainActivity extends ActionBarActivity {
 
     public void onDestroy() {
         super.onDestroy();
-        /*
-        FragmentManager fragmentManager = getSupportFragmentManager();
 
-        Fragment f = fragmentManager.findFragmentById(R.id.map);
-        if (f != null) {
-            fragmentManager.beginTransaction().remove(f).commit();
-        }
-        */
     }
 
 }
