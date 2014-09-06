@@ -122,7 +122,7 @@ public class GMapFragment extends Fragment {
         // Gets to GoogleMap from the MapView and does initialization stuff
         map = mapView.getMap();
         if (map != null) {
-            map.getUiSettings().setMyLocationButtonEnabled(false);
+            map.getUiSettings().setMyLocationButtonEnabled(true);
             map.setMyLocationEnabled(true);
             map.addMarker(new MarkerOptions().position(new LatLng(50.167003, 19.383262)));
 
@@ -141,8 +141,8 @@ public class GMapFragment extends Fragment {
             map.getUiSettings().setAllGesturesEnabled(isLocked);
 
             // Updates the location and zoom of the MapView
-            CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(PALENCIA, 10);
-            map.animateCamera(cameraUpdate);
+            //CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(PALENCIA, 10);
+            //map.animateCamera(cameraUpdate);
 
             for (int i = 0; i<datos.size(); i++){
                 createMarker(datos.get(i));

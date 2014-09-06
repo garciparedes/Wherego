@@ -31,6 +31,7 @@ public class ListFragment extends Fragment {
     ArrayList <Event> datos = CallAPI.getEventList();
 
 
+
     public static ListFragment newInstance(int index) {
         ListFragment f = new ListFragment();
         Bundle args = new Bundle();
@@ -64,24 +65,11 @@ public class ListFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
 
-                //**********************************************************
-                //*                 UNCOMPLETE METHOD                      *
-                //**********************************************************
-
-
-                /*
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
 
                 // Insert the fragment by replacing any existing fragment
                 fragmentManager.beginTransaction()
-                        .replace(R.id.content_frame,CalendarEventFragment.newInstance(1)).commit();
-
-
-                */
-
-                Toast.makeText(getActivity().getApplicationContext(),
-                        "Click ListItem Number " + position, Toast.LENGTH_LONG)
-                        .show();
+                        .replace(R.id.content_frame,EventFragment.newInstance(datos.get(position))).commit();
 
             }
 

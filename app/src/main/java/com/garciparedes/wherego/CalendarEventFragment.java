@@ -29,7 +29,6 @@ public class CalendarEventFragment extends Fragment {
 
     Calendar cal = Calendar.getInstance();
 
-
     ArrayList <Event> datos = CallAPI.getEventList();
     ArrayList <Event> datosDay = new ArrayList<Event>();
 
@@ -116,17 +115,11 @@ public class CalendarEventFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
 
-            /*
-            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
 
-            // Insert the fragment by replacing any existing fragment
-            fragmentManager.beginTransaction()
-                    .replace(R.id.content_frame,CalendarEventFragment.newInstance(1)).commit();
-            */
-
-            Toast.makeText(getActivity().getApplicationContext(),
-                    "Click ListItem Number " + position, Toast.LENGTH_SHORT)
-                    .show();
+                // Insert the fragment by replacing any existing fragment
+                fragmentManager.beginTransaction()
+                        .replace(R.id.content_frame,EventFragment.newInstance(datosDay.get(position))).commit();
 
             }
         });

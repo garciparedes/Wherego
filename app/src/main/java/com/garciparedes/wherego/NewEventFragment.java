@@ -17,7 +17,9 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import net.danlew.android.joda.JodaTimeAndroid;
 
+import org.joda.time.DateTime;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -44,6 +46,12 @@ public class NewEventFragment extends Fragment {
     private Coordinate newCoordinate;
     private Event newEvent;
 
+
+    // Variable for storing current date and time
+    private int mYear, mMonth, mDay, mHour, mMinute;
+
+    private long dateMillis;
+
     public static NewEventFragment newInstance() {
         NewEventFragment f = new NewEventFragment();
         return f;
@@ -68,7 +76,6 @@ public class NewEventFragment extends Fragment {
         setDescription();
         setTime();
         setCoordinate();
-
         setConfirm();
     }
 
@@ -122,33 +129,39 @@ public class NewEventFragment extends Fragment {
 
 
 
-                DialogFragment newFragment = new DatePickerFragment();
-                newFragment.show(getFragmentManager(), "datePicker");
+                // Process to get Current Date
+                final Calendar c = Calendar.getInstance();
+                mYear = c.get(Calendar.YEAR);
+                mMonth = c.get(Calendar.MONTH);
+                mDay = c.get(Calendar.DAY_OF_MONTH);
 
+                // Launch Date Picker Dialog
+                DatePickerDialog dpd = new DatePickerDialog(getActivity(),
+                        new DatePickerDialog.OnDateSetListener() {
 
-            }
-        });
+                            @Override
+                            public void onDateSet(DatePicker view, int year,
+                                                  int monthOfYear, int dayOfMonth) {
+                                // Display Selected date in textbox
+                                editTextDate.setText(dayOfMonth + "-"
+                                        + (monthOfYear + 1) + "-" + year);
 
-        /*
-        txtHour.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-
-
+                                dateMillis = new DateTime(year, monthOfYear + 1, dayOfMonth, 0, 0).getMillis();
+                            }
+                        }, mYear, mMonth, mDay);
                 if (hasFocus == true) {
-                    if (txtDate.getText().toString().compareTo("día/mes/año") == 0) // default text
-                    {
-                        txtDate.setText("");
-                    }
+                    dpd.show();
+
+                }else{
+                    dpd.dismiss();
                 }
 
 
-                DialogFragment newFragment = new TimePickerFragment();
-                newFragment.show(getFragmentManager(), "timePicker");
 
             }
         });
-        */
+
+
     }
 
     private void setCoordinate(){
@@ -157,15 +170,6 @@ public class NewEventFragment extends Fragment {
         editTextCoordinate.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-
-                /*
-                if (hasFocus == true) {
-                    if (txtDate.getText().toString().compareTo("día/mes/año") == 0) // default text
-                    {
-                        txtDate.setText("");
-                    }
-                }
-                */
 
             }
         });
@@ -180,7 +184,6 @@ public class NewEventFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-
                 if (!editTextName.getText().toString().isEmpty() &&
                         !editTextType.getText().toString().isEmpty() &&
                         !editTextDescription.getText().toString().isEmpty()
@@ -194,60 +197,18 @@ public class NewEventFragment extends Fragment {
                     newName = editTextName.getText().toString();
                     newType = editTextType.getText().toString();
                     newDescription = editTextDescription.getText().toString();
-                    newDate = new Date(new Date().getTime());
+                    newDate = new Date(dateMillis);
                     newCoordinate = new Coordinate("Palencia",34,-4);
 
                     newEvent = new Event(newName, newType, newDescription, newDate, newCoordinate);
                     CallAPI.addEvent(newEvent);
-                }
 
+                }
 
             }
 
         });
-    }
 
-
-
-    public static class TimePickerFragment extends DialogFragment
-            implements TimePickerDialog.OnTimeSetListener {
-
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState) {
-            // Use the current time as the default values for the picker
-            final Calendar c = Calendar.getInstance();
-            int hour = c.get(Calendar.HOUR_OF_DAY);
-            int minute = c.get(Calendar.MINUTE);
-
-            // Create a new instance of TimePickerDialog and return it
-            return new TimePickerDialog(getActivity(), this, hour, minute,
-                    DateFormat.is24HourFormat(getActivity()));
-        }
-
-        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-            // Do something with the time chosen by the user
-        }
-    }
-
-    public static class DatePickerFragment extends DialogFragment
-            implements DatePickerDialog.OnDateSetListener {
-
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState) {
-            // Use the current date as the default date in the picker
-            final Calendar c = Calendar.getInstance();
-            int year = c.get(Calendar.YEAR);
-            int month = c.get(Calendar.MONTH);
-            int day = c.get(Calendar.DAY_OF_MONTH);
-
-            // Create a new instance of DatePickerDialog and return it
-            return new DatePickerDialog(getActivity(), this, year, month, day);
-        }
-
-        public void onDateSet(DatePicker view, int year, int month, int day) {
-            // Do something with the date chosen by the user
-
-        }
     }
 
 }

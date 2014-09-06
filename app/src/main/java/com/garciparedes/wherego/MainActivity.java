@@ -17,6 +17,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import net.danlew.android.joda.JodaTimeAndroid;
+
 
 public class MainActivity extends ActionBarActivity {
 
@@ -32,6 +34,8 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        JodaTimeAndroid.init(this);
 
         mTitle = getTitle(); // Get current title
 
@@ -259,6 +263,7 @@ public class MainActivity extends ActionBarActivity {
 
                     }
                 }).create().show();
+
     }
 
 
