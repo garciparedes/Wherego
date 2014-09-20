@@ -66,12 +66,14 @@
             android:id="@+id/tv_set_coordinate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/coordinate"/>
+            android:text="@string/place"/>
 
-        <EditText
+        <AutoCompleteTextView
             android:id="@+id/edit_text_set_coordinate"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:ems= "13"
+            android:completionThreshold="3" />
     </LinearLayout>
 
 

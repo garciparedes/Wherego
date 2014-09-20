@@ -1,6 +1,8 @@
 package com.garciparedes.wherego;
 
 
+import com.google.android.gms.maps.model.LatLng;
+
 import java.util.Date;
 
 /**
@@ -14,13 +16,13 @@ public class Event {
 
     private Date date;
 
-    private Coordinate coordinate;
+    private LatLng coordinate;
 
 
     //private Calendar date;
 
 
-    public Event(String name, String type, String description, Date date, Coordinate coordinate){
+    public Event(String name, String type, String description, Date date, LatLng coordinate){
         this.name = name;
         this.type = type;
         this.description = description;
@@ -45,7 +47,7 @@ public class Event {
         this.date = date;
     }
 
-    public void setCoordinate(Coordinate coordinate) {
+    public void setCoordinate(LatLng coordinate) {
         this.coordinate = coordinate;
     }
 
@@ -65,7 +67,7 @@ public class Event {
         return date;
     }
 
-    public Coordinate getCoordinate(){
+    public LatLng getCoordinate(){
         return coordinate;
     }
 

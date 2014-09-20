@@ -54,51 +54,6 @@ public class GMapFragment extends Fragment {
         return f;
     }
 
-
-    /*
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-
-        View result = inflater.inflate(R.layout.fragment_map, container, false);
-
-
-        // http://stackoverflow.com/a/17024596/3921457
-
-        SupportMapFragment mapFrag = (SupportMapFragment) getActivity().getSupportFragmentManager()
-                .findFragmentById(R.id.map);
-
-        map = mapFrag.getMap();
-        /*
-
-        FragmentTransaction ft = getFragmentManager().beginTransaction();
-
-        map = ((SupportMapFragment) getFragmentManager().findFragmentById(R.id.map))
-                .getMap();
-
-        SupportMapFragment fmap = (SupportMapFragment) getFragmentManager().findFragmentById(R.id.map);
-
-        if (fmap == null) {
-            fmap = SupportMapFragment.newInstance();
-            ft.add(R.id.map, fmap);
-        }
-
-        ft.commit();
-        // Move the camera instantly to hamburg with a zoom of 15.
-        map.moveCamera(CameraUpdateFactory.newLatLngZoom(PALENCIA, 15));
-
-        // Zoom in, animating the camera.
-        map.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);
-
-
-        map.getUiSettings().setAllGesturesEnabled(false);
-        return result;
-
-    }
-
-
-    */
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -176,7 +131,7 @@ public class GMapFragment extends Fragment {
     }
     public void createMarker(Event event){
 
-        LatLng coordinates = new LatLng(event.getCoordinate().getX(),event.getCoordinate().getY());
+        LatLng coordinates = event.getCoordinate();
         Marker marker = map.addMarker(new MarkerOptions()
                         .position(coordinates)
                         .title(event.getName())
